@@ -1,0 +1,14 @@
+scalar_scalar: baz
+scalar_array: [baz, mux]
+scalar_hash: {bar: wink, baz: {ick: bick} }
+
+array_scalar: baz
+array_array: [baz, mux]
+array_hash: {bar: wink, baz: {ick: bick} }
+
+hash_scalar: baz
+hash_array: [baz, mux]
+hash_hash: {bar: wink, baz: {ick: bick} }
+
+mixed_messages:
+  hello: world

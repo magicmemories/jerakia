@@ -20,7 +20,6 @@ class Jerakia
     end
 
     def run(request)
-
       scope = Jerakia::Scope.new(request)
       dataset = Jerakia::Dataset.new(request)
       response_entries = []
@@ -33,7 +32,7 @@ class Jerakia
         responses = Jerakia::Datasource.run(dataset, lookup_instance)
         lookup_instance.filters.each do |filter|
           Jerakia.log.debug("Using output filter #{filter[:name]}")
-          Jerakia::Filter.load(filter[:name], dataset, filter[:opts]).filter
+          Jerakia::Filter.load(filter[:name], dataset, filter[:opts], self).filter
         end
         break unless lookup_instance.proceed?
       end

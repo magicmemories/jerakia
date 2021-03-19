@@ -1,0 +1,13 @@
+scalar_scalar: foo
+scalar_array: foo
+scalar_hash: foo
+
+array_scalar: [foo, bar]
+array_array: [foo, bar]
+array_hash: [foo, bar]
+
+hash_scalar: {foo: bar, baz: {mux: fin}}
+hash_array: {foo: bar, baz: {mux: fin}}
+hash_hash: {foo: bar, baz: {mux: fin}}
+
+mixed_messages: "WRONG TYPE!"

@@ -24,11 +24,11 @@ describe Jerakia do
       end
 
       it 'should contain the string valid_string' do
-        expect(answer.payload).to eq({ 
-          "key1"=>{"element2"=>"env"}, 
+        expect(answer.payload).to eq({
+          "key1"=>{"element2"=>"env"},
           "key2"=>{"element3"=>
             {"subelement3"=>"env"}
-          }, 
+          },
           "key3"=>"env"
         })
       end
@@ -55,9 +55,9 @@ describe Jerakia do
 
       it 'should contain the string valid_string' do
         expect(answer.payload).to eq( {
-          "key0" => { "element0"=>"common" }, 
+          "key0" => { "element0"=>"common" },
           "key1" => {"element2"=>"env"},
-          "key2" => {"element3"=>{"subelement3"=>"env"}}, 
+          "key2" => {"element3"=>{"subelement3"=>"env"}},
           "key3" => "env"}
       )
       end
@@ -84,13 +84,12 @@ describe Jerakia do
 
       it 'should contain a correctly merged hash' do
         expect(answer.payload).to eq( {
-          "key0"=>{"element0"=>"common"}, 
-          "key1"=>{"element1"=>"common", "element2"=>"env"}, 
-          "key2"=>{"element1"=>"common", "element2"=>{"subelement2"=>"common"}, "element3"=>{"subelement3"=>"env"}}, 
+          "key0"=>{"element0"=>"common"},
+          "key1"=>{"element1"=>"common", "element2"=>"env"},
+          "key2"=>{"element1"=>"common", "element2"=>{"subelement2"=>"common"}, "element3"=>{"subelement3"=>"env"}},
           "key3"=>"env"
         })
       end
     end
-
   end
 end

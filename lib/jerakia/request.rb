@@ -11,6 +11,7 @@ class Jerakia
     attr_accessor :scope
     attr_accessor :scope_options
     attr_accessor :use_schema
+    attr_accessor :cycle_detector
     attr_reader   :schema
 
     def initialize(opts = {})

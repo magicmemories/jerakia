@@ -34,7 +34,7 @@ hash:
     element1: common
     element2:
       subelement2: common
-  
+
 subhash:
   walk:
     replace: "%{env}"
@@ -75,3 +75,7 @@ msgpack:
   values:
     1: "Test 1"
     '2': "Test 2"
+
+lookup_namespaced_cyclical_reference: "Hello, ${interpolate::lookup_namespaced_cyclical_reference}"
+lookup_namespaced_similar_reference: "L3, ${similar_key}"
+similar_key: "L4"

@@ -1,0 +1,41 @@
+sub_value: "Environment is %{env}"
+sub_escape_value: "%{}{looks fine to me}"
+lookup_escape_value: "${}{looks fine to me}"
+lookup_value: "Hello, ${lookup_key}"
+lookup_key: World
+
+lookup_value_collection: "Hello, ${lookup_key_collection}"
+lookup_key_collection:
+  - 1
+  - 2
+  - 3
+
+lookup_value_namespaced: "Hello, ${test::teststring}"
+teststring: wrong_answer
+
+lookup_value_layered: "Hello, ${lookup_key_layered}"
+lookup_key_layered: oops_string_array
+
+lookup_value_self_reference: "Hello, ${lookup_value_self_reference}"
+
+lookup_value_cyclical_reference: "Hello, ${lookup_value_cyclical_partner}"
+lookup_value_cyclical_partner: "Hello, ${lookup_value_cyclical_reference}"
+
+lookup_namespaced_self_reference: "Hello, ${interpolate::lookup_namespaced_self_reference}"
+
+lookup_namespaced_cyclical_reference: "Hello, ${test::lookup_namespaced_cyclical_reference}"
+
+lookup_namespaced_similar_reference: "L1, ${similar_key}"
+similar_key: "L2, ${test::lookup_namespaced_similar_reference}"
+
+
+lookup_diggable: "Hello, ${people.David Ige.job_title}"
+people:
+  David Ige:
+    job_title: Governor
+    birthday: '1957-01-15'
+  T. S. Eliot:
+    job_title: Poet
+    birthday: '1888-09-26'
+
+lookup_tricky_dig: "He was born on ${people.T\\. S\\. Eliot.birthday}"

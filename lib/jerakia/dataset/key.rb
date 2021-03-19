@@ -95,6 +95,33 @@ class Jerakia
           @value ||= {}
           newhash = newval.deep_merge!(@value)
           @value = newhash
+        when :auto, :deep_auto
+          Jerakia.log.debug("Existing value: #{@value.inspect}; new value: #{newval.inspect}")
+          case [newval.class, @value.class]
+          when [Hash, Hash]
+            Jerakia.log.debug("Merging hashes")
+            if @merge == :auto
+              @value = newval.merge(@value)
+            else
+              @value = newval.deep_merge!(@value)
+            end
+          when [Array, Array]
+            Jerakia.log.debug("Concatenating arrays")
+            @value = @value.concat(newval)
+          else
+            if @value.nil?
+              Jerakia.log.debug("Adding #{newval}")
+              @value = newval
+            elsif newval.nil?
+              Jerakia.log.debug("Nothing to do, keeping #{@value}")
+            else
+              if ([Hash, Array] | [newval.class, @value.class]).any?
+                Jerakia.log.warn("Cannot merge #{newval} into #{@value}.")
+              end
+              Jerakia.log.debug("Rejecting #{newval} and ceasing cascade.")
+              @cascade = false
+            end
+          end
         end
       end
     end

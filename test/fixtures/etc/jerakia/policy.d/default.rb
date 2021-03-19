@@ -36,13 +36,13 @@ policy :default do
         "host/#{scope[:hostname]}",
         "env/#{scope[:env]}",
         "common",
-    ],
+      ],
     }
     exclude request.key, "skippy"
 
-     filter :encryption
-     filter :strsub, scope
-     
+    filter :encryption
+    filter :strsub, scope
+
   end
 end
 

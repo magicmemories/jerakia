@@ -1,15 +1,14 @@
 require 'sinatra'
 require 'jerakia'
 require 'thin'
+
 class Jerakia
   class Server
-
     def jerakia
       self.class.jerakia
     end
 
     class << self
-
       @jerakia = nil
       @config = {}
 
@@ -17,10 +16,10 @@ class Jerakia
 
       def default_config
         {
-        'bind'      => '127.0.0.1',
-        'port'      => '9843',
-        'token_ttl' => 300,
-	'tokens'     => [],
+          'bind'      => '127.0.0.1',
+          'port'      => '9843',
+          'token_ttl' => 300,
+	        'tokens'     => [],
         }
       end
 
@@ -29,15 +28,15 @@ class Jerakia
           unless t.match(/^\w+:\w+$/)
             raise Jerakia::ArgumentError, "Invalid token #{t}: must be <api_id>:<token> and be alphanumeric"
           end
-	  api_id, token_string = t.split(/:/)
-	  unless Jerakia::Server::Auth.exists?(api_id)
+          api_id, token_string = t.split(/:/)
+          unless Jerakia::Server::Auth.exists?(api_id)
             Jerakia::Server::Auth.create(api_id, token_string)
             Jerakia.log.verbose("Stored token for #{api_id}")
           else
-	    stored = Jerakia::Server::Auth.get_entry(api_id)
-	    unless stored.token == token_string
+            stored = Jerakia::Server::Auth.get_entry(api_id)
+            unless stored.token == token_string
               raise Jerakia::Error, ("Supplied token #{api_id}, conflicts with existing token")
-	    end
+            end
           end
         end
       end

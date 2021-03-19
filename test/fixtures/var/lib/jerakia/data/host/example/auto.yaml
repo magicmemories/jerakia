@@ -1,0 +1,5 @@
+mixed_messages:
+  foo: bar
+  baz:
+    - 1
+    - 2

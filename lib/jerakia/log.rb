@@ -35,6 +35,10 @@ class Jerakia::Log < Jerakia
     @@logger.debug msg
   end
 
+  def warn(msg)
+    @@logger.warn msg
+  end
+
   def error(msg)
     @@logger.error msg
   end

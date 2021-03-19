@@ -1,6 +1,6 @@
 ---
 policydir: test/fixtures/etc/jerakia/policy.d
-logfile: /dev/null
+logfile: /var/log/jerakia/test.log
 loglevel: debug
 plugindir: test/fixtures/etc/jerakia/lib
 

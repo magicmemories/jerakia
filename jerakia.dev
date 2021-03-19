@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+if [ "${tokens}" != "" ]; then
+  extra_args="${extra_args} -T ${tokens}"
+fi
+
+exec rerun --dir /usr/app,/etc/jerakia/policy.d --force-polling -- /usr/app/bin/jerakia $* $extra_args
